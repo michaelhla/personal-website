@@ -1,0 +1,296 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Import a clean monospace font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap');
+/* Alternative: Space Mono or Roboto Mono are also good options */
+
+body {
+    /* Option 1: JetBrains Mono - clean monospace */
+    font-family: 'JetBrains Mono', monospace;
+    
+    /* Option 2: System monospace stack */
+    /* font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; */
+    
+    line-height: 1.6;
+    color: #2d2d2d;
+    background-color: #fff;  /* Changed from #fafafa to pure white */
+    font-weight: 300;  /* Lighter font weight for that minimal feel */
+}
+
+section {
+    padding: 2rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero {
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 400;  /* Not too heavy */
+    letter-spacing: -1px;  /* Tighter letter spacing for that tech feel */
+}
+
+.tagline {
+    font-size: 1.1rem;
+    color: #666;  /* Subtle grey for secondary text */
+    letter-spacing: 1px;  /* Spread out the tagline slightly */
+}
+
+h2 {
+    font-weight: 400;
+    margin-bottom: 2rem;
+    letter-spacing: -0.5px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0;
+}
+
+.project-card {
+    display: flex;
+    align-items: stretch;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.project-media {
+    flex: 0 0 300px;
+    display: flex;
+    align-items: center;
+}
+
+.project-media img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-media video {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-content {
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 200px;
+}
+
+.project-card h3 {
+    padding: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+.project-card p {
+    padding: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.social-links {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-links a {
+    color: #666;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+/* Project grid video styling (for index.html) */
+.project-media video {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Blog post video styling */
+article.blog-post .project-media {
+    max-width: 800px;  /* Limit maximum width */
+    width: 80%;        /* Take up 80% of container width */
+    margin: 2rem auto; /* Center horizontally and add vertical spacing */
+}
+
+article.blog-post .project-media video {
+    width: 100%;
+    height: auto;      /* Maintain aspect ratio */
+    display: block;    /* Remove any unwanted spacing */
+    border-radius: 4px;/* Optional: slight rounding of corners */
+}
+
+/* Add content container styling */
+article.blog-post .content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Blog post layout */
+.blog-post {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header styling */
+.blog-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.blog-header h1 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+/* Main text blocks */
+.text-block {
+    max-width: 800px;
+    margin: 2rem auto;
+    text-align: left;
+    line-height: 1.8;
+}
+
+/* Content blocks (media, equations, etc.) */
+.content-block {
+    max-width: 800px;
+    margin: 3rem auto;
+    text-align: center;
+    box-shadow: none;
+    border: none;
+}
+
+/* Media container */
+.media-container {
+    width: 100%;
+    margin: 2rem 0;
+    box-shadow: none;
+}
+
+.media-container video,
+.media-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.media-container video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: none;
+    outline: none;
+    background: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+/* Caption styling */
+figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+    text-align: left;
+    line-height: 1.4;
+}
+
+/* Equation container */
+.equation-container {
+    padding: 1rem 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .blog-post {
+        padding: 1rem;
+    }
+    
+    .blog-header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Section headings */
+.text-block h2 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
+}
+
+.text-block h3 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.3px;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto;  /* Center the table */
+    width: 100%;     /* Take full width of container */
+    max-width: 800px; /* Match other content blocks */
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px 12px;  /* Add spacing inside cells */
+    text-align: left;   /* Align text to left */
+}
+
+th {
+    background-color: #fff;  /* Optional: distinguish header */
+}
+
+/* Blog author styling */
+.blog-author {
+    padding: 0.1rem;
+    text-align: center;
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 0.1rem;
+}
+
+.social-links img {
+    width: 24px;  /* Match Font Awesome icon size */
+    height: 24px;
+    vertical-align: middle;
+}
+
+

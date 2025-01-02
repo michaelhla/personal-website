@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Title - Your Name</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Add MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <article class="blog-post">
+        <header class="blog-header">
+            <h1>Masked Diffusion Language Modeling for Conditional Small Molecule Generation</h1>
+        </header>
+        <div class="blog-author">
+            <h3>Michael Hla</h3>
+        </div>
+
+        <div style="text-align: center;">
+            <div class="social-links" style="display: inline-block;">
+                <a href="https://github.com/michaelhla/smiles-mdlm" target="_blank">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://huggingface.co/mhla/smiles-mdlm/tree/main" target="_blank">
+                    <img src="../assets/icons/hf-logo.png" alt="Hugging Face Logo" style="width: 32px; height: 32px;">
+                </a>
+            </div>
+
+            <div style="margin: 2rem 0; text-align: center;">
+                <a href="https://arxiv.org/abs/2406.07524" target="_blank" style="color: grey; text-decoration: underline;">original MDLM arxiv</a>
+            </div>
+        </div>
+
+
+
+        <div class="blog-content">
+            <!-- Content block -->
+            <div class="content-block">
+                <div class="media-container">
+                    <video autoplay muted loop playsinline>
+                        <source src="../assets/smiles-mdlm/smiles-mdlm-animation.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>Animation showing the nonsequential text to molecule generation process using MDLM</figcaption>
+                </div>
+            </div>
+
+            <!-- Introduction section -->
+            <div class="text-block">
+                <h2>Small Molecule Generation</h2>
+                <p>Most pharmaceuticals are small molecules. Conditional generation of small molecules is extremely valuable as the success of a small molecule therapeutic is dependent on a number of factors such as binding strength, specificity, ADMET properties, etc. As a simple experiment to evaluate the capabilities of MDLM, we explore the toy case of text-guided molecular generation.</p>
+            </div>
+
+            <!-- Methods section with subsections -->
+            <div class="text-block">
+                <h2>Why Diffusion?</h2>
+                <p>Discrete molecular representations are not inherently sequential in the same form as text or bytes representing a program. For small molecules, the order of tokens matters far less than the overall connectivity and three-dimensional arrangement of atoms, making non-sequential generation much more appealing. Diffusion has also been shown to be better equipped for conditional or guided generation, which can be very beneficial for molecular generation since we often want to optimize select properties in molecular libraries while still producing a diverse set of molecules. </p>
+            </div>
+
+            <div class="text-block">
+                <h2>Why Discrete Diffusion? </h2>
+                <p>Since most small molecule representations are inherently discrete (either graph based or string representations called SMILES), it is intuitive to work in the discrete space to preserve molecular validity. We started with SMILES for simplicity and as a “first pass” validation of MDLM.</p>
+                <p>Side note: The argument for discrete representations of small molecules is weakening as continuous predictive tasks gain more research interest in molecular generation (ie. denoising 3D atomic coordinates and then running external cheminformatics software to determine bonds/atom types). However, since CHEBI-M is limited in scope, it made more sense to reduce complexity of the generative task and work in the discrete space for this project. </p>
+            </div>
+
+            <!-- Results section -->
+            <div class="text-block">
+                <h2>Why MDLM?</h2>
+            </div>
+
+            <div class="content-block">
+                <div class="media-container">
+                    <img src="../assets/smiles-mdlm/diagram.png" alt="MDLM Diagram">
+                    <figcaption>Diagram (taken from <a href="https://s-sahoo.com/mdlm/" target="_blank" rel="noopener noreferrer">(Sahoo, 2024)</a>) showing the MDLM noising and denoising process. Tokens are masked with some probability increasing with t. Tokens are predicted by the backbone using the masked sequence and noise schedule (represented by t, in this case). </figcaption>
+                </div>
+            </div>
+
+            <div class="text-block">
+                <p>Rather than projecting discrete data to the continuous space and denoising, MDLM is a form of diffusion defined entirely in the discrete space where “noise” can be thought of as iterated masking of tokens and “denoising” can be thought of as iterated unmasking of tokens following the defined noise schedule. </p>
+            </div>
+
+            <div class="content-block">
+                <div class="media-container">
+                    <p>\[q\left(\mathbf{z}_s \mid \mathbf{z}_t, \mathbf{x}\right)= \begin{cases}\operatorname{Cat}\left(\mathbf{z}_s ; \mathbf{z}_t\right) & \mathbf{z}_t \neq \mathbf{m} \\ \operatorname{Cat}\left(\mathbf{z}_s ; \frac{\left(1-\alpha_s\right) \mathbf{m}+\left(\alpha_s-\alpha_t\right) \mathbf{x}}{1-\alpha_t}\right) & \mathbf{z}_t=\mathbf{m}\end{cases}\]</p>
+                    <figcaption>Formula for the reverse process. z_i represents a latent vector for a given token, s and t are timesteps where s>t, m is a OHE vector for the masked token and x is a vector of logits. When z_i is unmasked (z_i!=m), there is no transition. But if z_i is masked, the transition defined as a weighted average of the masked token and the input logits defined by the noise schedule. </figcaption>
+                </div>
+            </div>
+
+            <div class="text-block">
+                <p>MDLM is also absorbing state, meaning that once tokens that are masked during the noising phase, they remain in the masked state for the entire noising phase and tokens that are unmasked during denoising remain so for the remainder of denoising. By taking T in the limit, we get a simplified training objective that is easily computable given logits and alpha (which is interestingly a weighted average of traditional masked language modeling losses per token!). </p>
+            </div>
+
+        <div class="content-block">
+            <div class="media-container">
+                <p>\[\mathcal{L}_{\mathrm{NELBO}}^{\infty}=\mathbb{E}_q \int_{t=0}^{t=1} \frac{\alpha_t^{\prime}}{1-\alpha_t} \sum_{\ell} \log \left\langle\mathbf{x}_\theta^{\ell}\left(\mathbf{z}_t^{1: L}, t\right), \mathbf{x}^{\ell}\right\rangle \mathrm{d} t\]</p>
+            <figcaption>By working in the continuous time space and constraining the reverse process to be absorbing state, you get a simplified and tractable NELBO. The loss can be thought of as the weighted sum of cross entropy losses across timesteps where losses from later in the denoising process are weighted more heavily. </figcaption>
+            </div>
+        </div>
+        
+        <div class="text-block">
+            <p>The full paper and a great in depth explanation of MDLM can be found <a href="https://s-sahoo.com/mdlm/" target="_blank" rel="noopener noreferrer">here</a>, but given the impressive test perplexity compared to traditional discrete diffusion and AR networks, I wanted to see if this method would work well for the more domain specific task of molecular generation. </p>
+        </div>
+
+        <div class="text-block">
+            <h2>Modifications</h2>
+            <p><strong>Atom group SMILES tokenizer</strong>: Custom tokenizer for SMILES that treats atomic groups explicitly as separate tokens, parentheses and ring numbers are individual tokens. Other work has shown that this type of explicit tokenization tends to outperform standard BPE for SMILES generation.</p><br>
+
+            <p><strong>DiT text guidance</strong>: Added cross attention to DiT backbone for text guidance across concatenated BERT embeddings. This concatenation can be done with any projection, but given higher quality of pretrained BERT embeddings (compared to scalar projections which most property optimization would require), text guidance was a reasonable first test case. </p><br>
+                
+            <p><strong>Upweighted EOS token for length prediction</strong>: There are a few ways to handle length prediction (for autoregressive models, you would not need to worry about this, EOS token with enough examples falls out). However, with a more limited dataset, there were some issues with length tallying, as the model tendency is to produce longer outputs. To overcome this, upweighted EOS prediction loss in the loss function to effectively serve as the length prediction function (could also simply upweight the padding token but this was less effective). </p><br>
+                
+            <p><strong>Validity tuning</strong>: SMILES follow a hyperspecific grammar required in order to produce what is considered a valid molecule. Model did not show many valid molecules despite a relatively high BLEU score. Added differentiable loss terms for ring, valence, and parentheses. Used logits to maintain smooth loss function and tested a few different values for lambda. Simple loss function is below. Tested for different lambda coefficients as well, reported best performing lambda value (0.1). </p><br>
+                
+            <p><strong>Negative Infinity Logit Bug</strong>: Once a token is denoised, the logits for the masked state are set to negative infinity.  However, the mask was not updated to ignore the negative infinity logits for the masked tokens in the loss calculation, resulting in unstable training and lots of NaNs. </p><br>
+        </div>
+
+        <div class="text-block">
+            <h2>Results and Conclusions</h2>
+            <p>Although MDLM achieved higher BLEU scores than the AR transformer, it significantly underperformed the continuous diffusion SMILES generator (TGM-DLM) in both BLEU score and validity, indicating that improvements in discrete diffusion are required before replacing continuous diffusion methods. </p>
+        </div>
+
+        <div class="content-block">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>BLEU Score</th>
+                        <th>Validity (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AR Transformer</td>
+                        <td>0.422</td>
+                        <td>0.906</td>
+                    </tr>
+                    <tr>
+                        <td>TGM-DLM (cont. diffusion)</td>
+                        <td>0.828</td>
+                        <td>0.789</td>
+                    </tr>
+                    <tr>
+                        <td>SMILES-MDLM</td>
+                        <td>0.678</td>
+                        <td>0.000</td>
+                    </tr>
+                    <tr>
+                        <td>SMILES-MDLM (with validity tuning)</td>
+                        <td>0.664</td>
+                        <td>0.167</td>
+                    </tr>
+                </tbody>
+            </table>
+            <figcaption>AR transformer and TGM-DLM results taken from <a href="https://arxiv.org/html/2402.13040v1" target="_blank" rel="noopener noreferrer">(Gong, 2024)</a>. All models were 180 params trained for similar FLOPs</figcaption>
+        </div>
+
+        <div class="text-block">
+            <h3>Structured output remains a challenge for diffusion models</h3>
+            <p>Diffusion-based models struggle with structured output tasks such as molecular generation. Despite achieving moderate BLEU scores, the validity of the MDLM generated molecules remains severely lesser than other methods. For instance, the base AR Transformer exhibited the highest validity (90.6%), far outperforming SMILES-MDLM even after validity tuning. The ineffectiveness of the validity tuning also indicates that MDLM models are more difficult to train for validity. This highlights that AR models may inherently be better suited for tasks requiring strict adherence to structured grammars, such as generating valid SMILES strings, due to their sequential generation process that may enforce syntax more robustly.</p>
+            <h3>Small vocabularies limit MDLM Performance</h3>
+            <p>SMILES representations inherently have a small vocabulary size, as most organic compounds are made of a small set of atoms and are typically no more than 100 atoms. In the CHEBI-20 dataset, 91% of SMILES were below 156 characters, resulting in a small vocabulary of 282 tokens across the 32,000 examples. While BLEU scores indicate reasonable linguistic similarity, the constrained vocabulary appears to amplify errors in generating valid molecules. This issue is less pronounced in language-based tasks, where the large vocabulary size better aligns with MDLM’s strengths. BPE could have mitigated these issues, but the short sequence lengths in SMILES further reduced its potential impact. However, it should be noted that MDLM may perform better in other domains with larger vocabularies or with other discrete representations such as graphs.</p>
+        </div>
+
+        </div>
+    </article>
+</body>
+</html> 
