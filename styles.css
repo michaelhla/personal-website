@@ -64,6 +64,7 @@ h2 {
 
 .project-card {
     display: flex;
+    flex-direction: column;
     align-items: stretch;
     text-decoration: none;
     color: inherit;
@@ -74,20 +75,14 @@ h2 {
 }
 
 .project-media {
-    flex: 0 0 300px;
-    display: flex;
-    align-items: center;
-}
-
-.project-media img {
+    flex: none;
     width: 100%;
-    height: 200px;
-    object-fit: cover;
 }
 
+.project-media img,
 .project-media video {
     width: 100%;
-    height: 200px;
+    height: 250px;
     object-fit: cover;
 }
 
@@ -291,6 +286,22 @@ th {
     width: 24px;  /* Match Font Awesome icon size */
     height: 24px;
     vertical-align: middle;
+}
+
+/* Add media query for larger screens */
+@media (min-width: 768px) {
+    .project-card {
+        flex-direction: row;
+    }
+    
+    .project-media {
+        flex: 0 0 300px;
+    }
+    
+    .project-media img,
+    .project-media video {
+        height: 200px;
+    }
 }
 
 
