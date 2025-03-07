@@ -177,6 +177,10 @@ article.blog-post .content {
     line-height: 1.8;
 }
 
+.text-block p {
+    margin-bottom: 2.5rem;  /* Increased from 1.5rem to 2.5rem for more spacing */
+}
+
 /* Content blocks (media, equations, etc.) */
 .content-block {
     max-width: 800px;
