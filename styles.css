@@ -21,6 +21,10 @@ body {
     font-weight: 300;  /* Lighter font weight for that minimal feel */
 }
 
+strong {
+    font-weight: 600;
+}
+
 section {
     padding: 2rem 2rem;
     max-width: 1200px;
@@ -28,12 +32,13 @@ section {
 }
 
 .hero {
-    min-height: 40vh;
+    min-height: 30vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 2rem 2rem 0 2rem;
 }
 
 .hero h1 {
@@ -53,6 +58,10 @@ h2 {
     font-weight: 400;
     margin-bottom: 2rem;
     letter-spacing: -0.5px;
+}
+
+.projects {
+    padding: 0 2rem 2rem 2rem;
 }
 
 .project-grid {
@@ -111,7 +120,7 @@ h2 {
 }
 
 .social-links {
-    margin-top: 2rem;
+    margin-top: 1rem;
     display: flex;
     gap: 1.5rem;
 }
