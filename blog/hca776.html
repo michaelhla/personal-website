@@ -32,9 +32,14 @@
 
         <div style="margin: 2rem 0; text-align: center;">
         </div>
-        <div class="text-block" style="text-align: center;">
-            <p style="margin-bottom: 2.5rem;">LLM optimized carbon capture enzymes that are 170% more active and 25% more stable</p>
-        </div>
+            <div class="content-block">
+                <div class="media-container">
+                    <video autoplay muted loop playsinline>
+                        <source src="../assets/hca776/hca776.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>Structural comparison of wild-type hCA II and the optimized hCA 776 variant.</figcaption>
+                </div>
+            </div>
 
         <div class="blog-content">
             <!-- Introduction section -->
@@ -51,30 +56,13 @@
                 <h2>Methods</h2>
                 <p style="margin-bottom: 2.5rem;">5 sequences from the original Pro-1 generations (4 conservative, 1 creative)  were selected for wet lab validation. Sequences with more conservative modifications were selected due to their higher likelihood of successful expression during the FGF-1 validation. (See here for full sequences, modifications, and reasoning trace excerpts).</p>
                 <p style="margin-bottom: 2.5rem;">I also generated 4 sequences with sonnet 4 + specific tools for enzyme optimization. The motivation here was to determine if sonnet 4, a generalist model with tools, could achieve similar results with a smaller model specifically posttrained on the task of protein optimization. In other words, could an industry veteran design better sequences than an intelligent individual with tools?</p>
-                <p style="margin-bottom: 2.5rem;">Tool List:</p>
-                <ul>
-                    <li>RMSD calculator</li>
-                    <li>Folding model</li>
-                    <li>Literature search</li>
-                    <li>Rosetta energy function</li>
-                    <li>Catalytic site examiner (returns distance and image of aligned catalytic residues in pymol)</li>
-                    <li>Secondary structure examiner (returns pymol image of SS)</li>
-                </ul>
+                <div class="content-block">
+                    <div class="media-container">
+                        <img src="../assets/hca776/active_site.png" alt="Active site preservation">
+                        <figcaption>Catalytic active site analysis showing preservation of key residues and proper spatial arrangement for enzymatic function.</figcaption>
+                    </div>
+                </div>
                 <p style="margin-bottom: 2.5rem; margin-top: 2.5rem;">The agent would run in a loop for hours at a time, keeping a log of the best modifications it discovered in the process that it could read and write to as it decided. Each of the best agent results employed different approaches, with some reasoning from first principles about the structure and others searching the literature for related results, drawing inspiration from modifications proven to work for other enzymes.</p>
-            </div>
-
-            <div class="content-block">
-                <div class="media-container">
-                    <img src="../assets/hca776/agent_reasoning.png" alt="Agent reasoning trace">
-                    <figcaption>Example of sonnet 4 agent reasoning with tool calls for literature search and structural analysis.</figcaption>
-                </div>
-            </div>
-
-            <div class="content-block">
-                <div class="media-container">
-                    <img src="../assets/hca776/pro1_reasoning.png" alt="Pro-1 reasoning trace">
-                    <figcaption>Pro-1 reasoning trace showing the model's approach to incorporating NEXT tag for stability enhancement.</figcaption>
-                </div>
             </div>
 
             <!-- Lab Results section -->
@@ -93,9 +81,9 @@
             <div class="text-block">
                 <p style="margin-bottom: 2.5rem;">Nearly all of the sequences (8/11) expressed well and showed increased activity. 4 of these showed increased stability at pH of 5.5 or 9.5. None of the variants proposed had been previously discovered or characterized.</p>
                 <p style="margin-bottom: 2.5rem;">The best sequence across conditions was produced by the "creativity tuned" Pro-1 model. Claude with tools produced significantly more active enzymes with elevated stability in highly basic environments.</p>
-                <p style="margin-bottom: 2.5rem;">Best activity: 169.4 min-1 (+177%) (sonnet)</p>
-                <p style="margin-bottom: 2.5rem;">Best at ph 5.5: Tm  42.5 (+8.5 degrees C) (pro-1)</p>
-                <p style="margin-bottom: 2.5rem;">Best at pH 9.5: 43 (+8 deg C) (sonnet)</p>
+                <p style="margin-bottom: 2.5rem;"><strong>Best activity: 169.4 min-1 (+177%) (sonnet)</strong></p>
+                <p style="margin-bottom: 2.5rem;"><strong>Best at ph 5.5: Tm  42.5 (+8.5 degrees C) (pro-1)</strong></p>
+                <p style="margin-bottom: 2.5rem;"><strong>Best at pH 9.5: 43 (+8 deg C) (sonnet)</strong></p>
                 <p style="margin-bottom: 2.5rem;">Note that many of the sequences are particularly good for a certain application (good in high vs low pH, higher temp, higher activity). However, sequences 2, 10, and 11 appear to be useful across a number of conditions.</p>
                 <p style="margin-bottom: 2.5rem;">Also worth noting the discrepancy between TSA titration Tm and pH stability Tm. Not certain why these are so different despite running the same sypro orange assay, but given that the pH stability assays more accurately reflect deployment conditions and have significantly more samples, I am inclined to attribute the difference to noise.</p>
             </div>
@@ -109,22 +97,8 @@
 
             <div class="content-block">
                 <div class="media-container">
-                    <img src="../assets/hca776/stability_ph55.png" alt="Stability at pH 5.5">
+                    <img src="../assets/hca776/stabgraph.png" alt="Stability at pH 5.5">
                     <figcaption>Thermal stability at pH 5.5 showing Pro-1's strong performance in acidic conditions.</figcaption>
-                </div>
-            </div>
-
-            <div class="content-block">
-                <div class="media-container">
-                    <img src="../assets/hca776/stability_ph95.png" alt="Stability at pH 9.5">
-                    <figcaption>Thermal stability at pH 9.5 showing strong performance across methods in basic conditions.</figcaption>
-                </div>
-            </div>
-
-            <div class="content-block">
-                <div class="media-container">
-                    <img src="../assets/hca776/seq11_raw.png" alt="Sequence 11 raw data">
-                    <figcaption>Raw activity assay data for sequence 11 (Deep Research o3-pro) showing enzyme kinetics over time.</figcaption>
                 </div>
             </div>
 
@@ -136,8 +110,8 @@
 
             <div class="content-block">
                 <div class="media-container">
-                    <img src="../assets/hca776/structures.png" alt="Protein structures comparison">
-                    <figcaption>Structural comparison of wild-type hCA II and the optimized hCA 776 variant.</figcaption>
+                    <img src="../assets/hca776/pro1_reasoning.png" alt="Pro-1 reasoning trace">
+                    <figcaption>Pro-1 reasoning trace showing the model's approach to incorporating NEXT tag for stability enhancement.</figcaption>
                 </div>
             </div>
 
@@ -146,31 +120,32 @@
                 <p style="margin-bottom: 2.5rem;">Claude identified that hCA II was an alpha carbonic anhydrase and was primarily composed of beta sheets. From this, it decided to search the literature for beta barrel insertions in known thermozymes. It then found some sources on mutations that enhance beta barrel core packing and hydrophobic interactions, and selected relevant mutations such as L78I and I208V.  The reasoning traces from the agent are unfortunately less interesting and do not include many thinking tokens between tool calls. Will be curious to see how this has changed with the newer models in the next phase.</p>
             </div>
 
-            <div class="content-block">
-                <div class="media-container">
-                    <img src="../assets/hca776/complement_stabilisers.png" alt="How suggestions complement known stabilisers">
-                    <figcaption>Summary of how the proposed modifications complement known stabilization strategies.</figcaption>
-                </div>
-            </div>
 
             <div class="content-block">
                 <div class="media-container">
-                    <img src="../assets/hca776/active_site.png" alt="Active site preservation">
-                    <figcaption>Catalytic active site analysis showing preservation of key residues and proper spatial arrangement for enzymatic function.</figcaption>
+                    <img src="../assets/hca776/agent_reasoning.png" alt="Agent reasoning trace">
+                    <figcaption>Example of sonnet 4 agent reasoning with tool calls for literature search and structural analysis.</figcaption>
                 </div>
             </div>
+
 
             <!-- Bonus o3 Sequence section -->
             <div class="text-block">
                 <h2>Bonus o3 Sequence</h2>
                 <p style="margin-bottom: 2.5rem;">Out of curiosity, I also gave deep research (powered by o3-pro) a chance to provide some candidates for synthesis. The reasoning itself was significantly stronger, and the model collected a diverse set of relevant sources across the literature to inform its mutations.</p>
+                <div class="content-block">
+                    <div class="media-container">
+                        <img src="../assets/hca776/complement_stabilisers.png" alt="How suggestions complement known stabilisers">
+                        <figcaption>Summary of how the proposed modifications complement known stabilization strategies.</figcaption>
+                    </div>
+                </div>
                 <p style="margin-bottom: 2.5rem;">Doubtful of the suggested modifications, I checked rosetta scores, RMSD, and even visually examined the structure of the o3 variant. All evidence indicated that the sequence was highly unstable. However, after some back and forth, the model remained remarkably confident in its proposed mutations, criticized my methods, and persuaded me to include the sequence in the validation.</p>
                 <p style="margin-bottom: 2.5rem;">The results were mixed. On the one hand, the Tm curves at pH 5.5 and 9.5 are reasonably smooth and the activity curve at neutral pH indicates that the enzyme is functional. However, the presence of multiple peaks in the other melting curves raises questions about true functionality. The most likely explanation for this is that there is a separate region of the protein that unfolds at lower temperature before the main unfolding event happens at higher temperature. Whether or not the protein remains functional after this first event is unclear.</p>
             </div>
 
             <div class="content-block">
                 <div class="media-container">
-                    <img src="../assets/hca776/seq11_derivative.png" alt="Sequence 11 derivative results">
+                    <img src="../assets/hca776/sequence11.png" alt="Sequence 11 derivative results">
                     <figcaption>Derivative melting curves for sequence 11 showing multiple peaks across different pH conditions, suggesting complex unfolding behavior.</figcaption>
                 </div>
             </div>
@@ -195,10 +170,9 @@
                 <h2>Next Steps</h2>
                 <p style="margin-bottom: 2.5rem;">There is still a substantial amount of work to be done before the enzymes can be productionized. Current priority is translation to a deployment environment. While these lab results are promising, a significant amount of optimization is still required to ensure the enzymes are effective (ie. immobilization, long term stability, retained activity, etc). In talks with a large scale deployment partner, more on this soon.</p>
                 <p style="margin-bottom: 2.5rem;">For now, this is a significant milestone in AI for science. Efficiency of carbon capture methods will be one of the most important objectives to hill climb over the coming decades and LLM's seem to be well equipped for the intelligence and creativity required by the task. Today, these models can create more efficient carbonic anhydrases, but tomorrow they may design a completely novel material or process orders of magnitude better than the enzymes produced above. As the models continue to defy the odds, the only reasonable conclusion remaining is that there is no upper bound on the potential of this technology.</p>
-                <p style="margin-bottom: 2.5rem;">Special thanks to Alexis Ohanian, Lissie Garvin, and the @776foundation for helping to sponsor the synthesis. Also big thanks to Julian Englert and the Adaptyv Bio team for sponsoring the initial FGF-1 validations of Pro-1.</p>
+                <p style="margin-bottom: 2.5rem;">Special thanks to Alexis Ohanian, Lissie Garvin, and the 776 Foundation for helping to sponsor the synthesis. Also big thanks to Julian Englert and the Adaptyv Bio team for sponsoring the initial FGF-1 validations of Pro-1.</p>
                 <p style="margin-bottom: 2.5rem;"><a href="https://docs.google.com/spreadsheets/d/1n09DJaXGJ4SuoVlD2n4yP0kULcl7aoM5WnvY6Or6K-w/edit?usp=sharing">Link to full lab data</a></p>
                 <p style="margin-bottom: 2.5rem;"><a href="https://github.com/michaelhla/pro-1/blob/main/hca_776/summary.json">Link to sequences</a></p>
-                <p style="margin-bottom: 2.5rem;"><a href="https://github.com/michaelhla/pro-1">link to repo</a></p>
             </div>
 
         </div>
