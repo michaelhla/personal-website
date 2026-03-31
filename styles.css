@@ -4,25 +4,22 @@
     box-sizing: border-box;
 }
 
-/* Import a clean monospace font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap');
-/* Alternative: Space Mono or Roboto Mono are also good options */
+html {
+    scroll-behavior: smooth;
+}
 
 body {
-    /* Option 1: JetBrains Mono - clean monospace */
-    font-family: 'JetBrains Mono', monospace;
-    
-    /* Option 2: System monospace stack */
-    /* font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; */
-    
-    line-height: 1.6;
-    color: #2d2d2d;
-    background-color: #fff;  /* Changed from #fafafa to pure white */
-    font-weight: 300;  /* Lighter font weight for that minimal feel */
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #1a1a1a;
+    background-color: #FEFCF8;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
 }
 
 strong {
-    font-weight: 600;
+    font-weight: 700;
 }
 
 section {
@@ -44,20 +41,20 @@ section {
 .hero h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
-    font-weight: 400;  /* Not too heavy */
-    letter-spacing: -1px;  /* Tighter letter spacing for that tech feel */
+    font-weight: 400;
+    letter-spacing: -0.02em;
 }
 
 .tagline {
     font-size: 1.1rem;
-    color: #666;  /* Subtle grey for secondary text */
-    letter-spacing: 1px;  /* Spread out the tagline slightly */
+    color: #555;
+    letter-spacing: 0.02em;
 }
 
 h2 {
     font-weight: 400;
     margin-bottom: 2rem;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.01em;
 }
 
 .projects {
@@ -109,14 +106,14 @@ h2 {
 .project-card h3 {
     padding: 0;
     margin-bottom: 0.5rem;
-    font-weight: 400;
-    font-size: 1.1rem;
+    font-weight: 700;
+    font-size: 1.15rem;
 }
 
 .project-card p {
     padding: 0;
-    color: #666;
-    font-size: 0.9rem;
+    color: #555;
+    font-size: 0.95rem;
 }
 
 .social-links {
@@ -183,11 +180,11 @@ article.blog-post .content {
     max-width: 800px;
     margin: 2rem auto;
     text-align: left;
-    line-height: 1.8;
+    line-height: 1.7;
 }
 
 .text-block p {
-    margin-bottom: 2.5rem;  /* Increased from 1.5rem to 2.5rem for more spacing */
+    margin-bottom: 1.5rem;
 }
 
 /* Content blocks (media, equations, etc.) */
@@ -229,11 +226,12 @@ article.blog-post .content {
 
 /* Caption styling */
 figcaption {
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    color: #666;
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    color: #555;
     text-align: left;
-    line-height: 1.4;
+    line-height: 1.5;
+    font-style: italic;
 }
 
 /* Equation container */
@@ -254,19 +252,20 @@ figcaption {
 
 /* Section headings */
 .text-block h2 {
-    font-size: 1.8rem;
-    font-weight: 400;
+    font-size: 1.75rem;
+    font-weight: 700;
     margin-top: 3rem;
     margin-bottom: 1.5rem;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.01em;
 }
 
 .text-block h3 {
-    font-size: 1.4rem;
-    font-weight: 400;
+    font-size: 1.35rem;
+    font-weight: 700;
     margin-top: 2rem;
     margin-bottom: 1rem;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.01em;
+    font-style: italic;
 }
 
 table {
@@ -283,7 +282,7 @@ th, td {
 }
 
 th {
-    background-color: #fff;  /* Optional: distinguish header */
+    background-color: #FEFCF8;
 }
 
 /* Blog author styling */
@@ -317,4 +316,45 @@ th {
     }
 }
 
+/* Blog list styling */
+.text-block ul, .text-block ol {
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+}
 
+.text-block li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+/* Collapsible details/summary */
+details {
+    padding-bottom: 1rem;
+}
+
+details summary {
+    font-size: 1.35rem;
+    font-weight: 700;
+    font-style: italic;
+    cursor: pointer;
+    padding: 0.75rem 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+details summary::before {
+    content: '\25B6';
+    font-size: 0.7rem;
+    font-style: normal;
+    transition: transform 0.2s ease;
+}
+
+details[open] summary::before {
+    transform: rotate(90deg);
+}
