@@ -106,7 +106,7 @@
                     <li style="margin-left: 0;">Special relativity</li>
                     <li style="margin-left: 0;">General relativity</li>
                 </ul>
-                <p style="margin-top: 1.5rem;">(to see the full eval prompts, click <a href="https://github.com/michaelhla/gpt1900/blob/master/EVAL.json" target="_blank" rel="noopener noreferrer" style="color: grey; text-decoration: underline;">here</a>. To learn more about each problem, click here).</p>
+                <p style="margin-top: 1.5rem;">(to see the full eval prompts, click <a href="https://github.com/michaelhla/gpt1900/blob/master/EVAL.json" target="_blank" rel="noopener noreferrer" style="color: grey; text-decoration: underline;">here</a>. To learn more about each problem, click <a href="#evaluations" style="color: grey; text-decoration: underline;">here</a>).</p>
                 <p>Note that I am also limiting the scope of the project to train a transformer based model to see if it can produce conceptually correct explanations. Success for this experiment would be if the model can generate coherent explanations for the observations that were later proven to be physically correct (phrases such as "discrete packets of light", "mass bending spacetime", etc).</p>
             </div>
 
@@ -234,7 +234,7 @@
 
             <!-- Evaluation -->
             <div class="text-block">
-                <h2>Evaluation</h2>
+                <h2 id="evaluations">Evaluation</h2>
                 <p>Our evaluation prompts consist of experimental setup &rarr; observations &rarr; contradictory classical assumptions. We ask the model to select the assumption that must be incorrect given the observed phenomena and provide an explanation. For the problems about relativity, we prompt the model with the set up for a thought experiment, and ask the model to draw conclusions.</p>
                 <p>Note that there are certainly more rigorous forms of evaluation and harder ways to prompt the model, but these evaluations are suitable for initial results.</p>
             </div>
@@ -316,7 +316,15 @@
             <div class="text-block">
                 <p>For the rest of the evaluation prompts, the model is unable to produce anything close to correctness. Even the best responses still have some traces of contradiction and incoherence. You can read the full generations <a href="https://github.com/michaelhla/gpt1900/blob/master/results/physics_eval_v11/best_generations.md" target="_blank" rel="noopener noreferrer" style="color: grey; text-decoration: underline;">here</a>.</p>
                 <p>There is some indication that these results are robust. Rewording the prompts for the photoelectric effect and the elevator thought experiment results in the same conclusions reached.</p>
-                <p>[Another interesting generation here]</p>
+            </div>
+
+            <div class="content-block">
+                <div class="media-container">
+                    <img src="../assets/machina-mirabilis/model-generations-2.png" alt="Model generations">
+                </div>
+            </div>
+
+            <div class="text-block">
                 <p>Removing the classical assumptions section also results in similar conclusions as above. Interestingly, for the photoelectric effect, the model will argue that "light is concentrated at the instant" and its energy is determined solely by frequency.</p>
             </div>
 
@@ -463,7 +471,7 @@
                 <p>There was also a bug in nanochat's BOS-bestfit dataloader where, when a row couldn't fit any remaining document, the shortest document would be cropped to fill the space &mdash; but the leftover tokens were silently discarded instead of being returned to the buffer. This meant training data was being lost every time the fallback path triggered. We fixed this by preserving the remainder for subsequent rows. Bug fix here:</p>
                 <p>Interestingly, there is some discussion of light being particles from Newton's corpuscular theory. There is some material in the training data that mentions the corpuscular theory of light from Newton. Sometimes the model will reference this. Seems like it is just saying words.</p>
                 <p>We could also just wait a few years until our next big scientific breakthrough and use an old GPT checkpoint. These models are effectively time capsules themselves (with better conversational ability.) But that's no fun.</p>
-                <p>The non instruction tuned model comes to a lot of the same conclusions as above. Click <a href="https://github.com/michaelhla/gpt1900/blob/master/results/physics_eval_v6/generations.json" target="_blank" rel="noopener noreferrer" style="color: grey; text-decoration: underline;">here</a> for the best generations there. Same with if you don't prompt the model with the classical assumptions being questioned. (click here)</p>
+                <p>The non instruction tuned model comes to a lot of the same conclusions as above. Click <a href="https://github.com/michaelhla/gpt1900/blob/master/results/physics_eval_v6/generations.json" target="_blank" rel="noopener noreferrer" style="color: grey; text-decoration: underline;">here</a> for the best generations there. Same with if you don't prompt the model with the classical assumptions being questioned. (click <a href="https://github.com/michaelhla/gpt1900/blob/master/results/physics_eval_v11_no_assumptions/results_judged.json" target="_blank" rel="noopener noreferrer" style="color: grey; text-decoration: underline;">here</a>)</p>
                 <p>Adding classical assumptions that are completely irrelevant is typically enough to derail the model, except for the elevator experiment, for which the model maintains that gravity pulls on the medium around the light.</p>
                 <p>Bias across historic LLM&rsquo;s: Base LLM&rsquo;s are, in some sense, the average of humanity at any given point in time. Some SAE/latent space analysis would be very interesting here. Could be interesting to find directions in historic LLM activation space that correspond with more progressive or conservative views. Or seeing how different base models group certain concepts over time.</p>
                 <p>Historic simulations: There is an interesting idea here to try and create models that could accurately reflect the beliefs of the people of the past and allow historians to converse with them. This is the closest thing we have to time travel at the moment. Companies like Simile do similar work here. Would be cool to make the models act like specific people from that age, more conversational + multiturn.</p>
