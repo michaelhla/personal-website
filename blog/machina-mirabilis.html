@@ -314,8 +314,8 @@
             </div>
 
             <div class="text-block">
-                <p>For the rest of the evaluation prompts, the model is unable to produce anything close to correctness. Even the best responses still have some traces of contradiction and incoherence. You can read the full generations <a href="https://github.com/michaelhla/gpt1900/blob/master/results/physics_eval_v11/best_generations.md" target="_blank" rel="noopener noreferrer" style="color: grey; text-decoration: underline;">here</a>.</p>
                 <p>There is some indication that these results are robust. Rewording the prompts for the photoelectric effect and the elevator thought experiment results in the same conclusions reached.</p>
+                <p>Sometimes, the model will generate some hilarious responses, comparing particles to steam engines or rivers. We can thank the prose in the training corpus for this.</p>
             </div>
 
             <div class="content-block">
@@ -326,6 +326,7 @@
 
             <div class="text-block">
                 <p>Removing the classical assumptions section also results in similar conclusions as above. Interestingly, for the photoelectric effect, the model will argue that "light is concentrated at the instant" and its energy is determined solely by frequency.</p>
+                <p>You can read the full generations <a href="https://github.com/michaelhla/gpt1900/blob/master/results/physics_eval_v11/best_generations.md" target="_blank" rel="noopener noreferrer" style="color: grey; text-decoration: underline;">here</a>.</p>
             </div>
 
             <!-- My Cautious Conclusions -->
@@ -343,11 +344,10 @@
             <div class="text-block">
                 <p>(Because the evaluations are very vibes based, my conclusion will also be vibes based)</p>
                 <p>While there are some promising results related to the photoelectric effect and general relativity, it remains unclear if the model has any true intuition about the discoveries that it appears to be making.</p>
-                <p>The most likely explanation for the apparent breakthroughs is that the model is parroting words that seem plausible, but does not have any sort of strong internal representation of the world to reason from. For true intelligence, this internal consistency is absolutely necessary. Otherwise, cherry picking high temperature sampled variants would be too tempting. In its current state, our model is closer to a lucky random word generator than it is to Einstein.</p>
+                <p>The most likely explanation for the apparent breakthroughs is that the model is parroting words that seem plausible, but does not have any sort of strong internal representation of the world to reason from. For true intelligence, this internal consistency is absolutely necessary. Otherwise, cherry picking high temperature sampled variants would be too tempting.</p>
                 <p>Additionally, these evaluations are much easier than the setting that Einstein and Planck faced. Curating the information and posing the right questions is a critical part of the discovery process, and this model is incapable of doing any sort of long form reasoning.</p>
                 <p>It is also highly probable that there is some reward hacking present here. There are repetitive phrases the model likes to latch onto, such as "you have touched a point of considerable importance.." To some degree, the model has likely learned how to bullshit our poor LLM as a judge.</p>
-                <p>However, we must also note that this result does not necessarily mean that the field's current approach to intelligence is incorrect. There are a number of confounders, including size of the model, dataset, etc. If an Opus 5 level model could have been trained in the year 1900, many of the limitations of our smaller model might have been overcome.</p>
-                <p>Therefore, no strong conclusions about our methods to reach AGI can be drawn from the evidence at this time.</p>
+                <p>However, we must also note that this result does not necessarily mean that the field's current approach to intelligence is incorrect. There are a number of confounders, including size of the model, dataset, etc. If a frontier model could have been trained in the year 1900, many of the limitations of our smaller model might have been overcome.</p>
             </div>
 
             <!-- Future Directions -->
@@ -376,20 +376,20 @@
                 <p>Most of their ideas will not work, but then again, neither do ours. Who cares if the models are &ldquo;just saying words&rdquo; if they can push frontier evals?</p>
 
                 <h3>Humanity's last edge?</h3>
-                <p>And yet, I find myself pushing Claude more often than I should. <em>Question those suspicious results. Rethink your approach to the problem. Experiment with this more interesting direction.</em></p>
+                <p>And yet, I find myself pushing Claude more often than I should. <em>Question those suspicious results. Use an easier approach to the problem. Experiment with this more interesting direction.</em></p>
                 <p>No matter which model I try, this always seems to be the case. The reasoning traces undoubtedly become more impressive as new models are released, but there seems to be a fundamental difference in how the next token predictors operate.</p>
                 <p>Humans hold an ever changing distribution of the world shaped by an infinite amount of noise from our everyday experiences. The amount of information that enters our brains is tremendous. And somehow, we are astoundingly good at filtering for relevance.</p>
                 <p>The source of this is an exceptional internal value model for all of our inputs and thoughts which has been optimized from birth. Every event, thought, or idea you have ever experienced was assigned a different weight as it entered your brain. Over time, this constant filtering builds an intuition which many call &ldquo;taste&rdquo;.</p>
-                <p>It&rsquo;s the underpinning mechanism for why we remember some things and forget most. Why some ideas inspire while others bore you. Why you can tell that some pieces of writing feel fresh and others feel AI generated. Billions of years of evolution and countless experiences over your lifetime have optimized you to do so.</p>
-                <p>Our taste is constantly updating and improving, shaped by every interaction and perception of reality. As new information is introduced, your value network chooses to store it, and in doing so, updates itself. Noise from seemingly typical events shifts your distribution ever so slightly, subtly pushing your value network away from the average. Why is it that time away from a problem can help us solve it? Why can we stew on ideas for hours, days, weeks on end, and continue to reach novel insights throughout the entire process? The intuition only builds with every second of existence.</p>
-                <p>This value assignment ultimately comes from within. The joy you feel is not a scalar reward from God. Einstein was not prompted to push his thought experiments further. Curiosity pulls us in these interesting directions. Skepticism allows for self verification. Even when we feel we have a solution, we never really stop checking ourselves.</p>
+                <p>It&rsquo;s the underpinning mechanism for why we remember some things and forget most. Why some ideas inspire while others bore. Why you can tell that some pieces of writing feel fresh and others feel AI generated. Billions of years of evolution and countless experiences over your lifetime have optimized you to do so.</p>
+                <p>Our taste is constantly updating and improving, shaped by every interaction and perception of reality. As new information is introduced, your value network chooses whether or not to store it, and in doing so, delivers a self-update. Noise from everyday events shifts your distribution ever so slightly, subtly pushing your value network away from the average. Why is it that time away from a problem can help us solve it? Why can we stew on ideas for hours, days, weeks on end, and continue to reach novel insights throughout the entire process? Our intuition only builds with every second of existence.</p>
+                <p>Ultimately, this value assignment comes from within. The joy you feel is not a scalar reward from God. Einstein was not prompted to push his thought experiments further. Curiosity pulls us in these interesting directions. Skepticism allows for self verification. Even when we feel we have a solution, we never really stop checking ourselves.</p>
                 <p>Current models do not seem to have any of this. Perhaps they will someday.</p>
 
                 <h3>Machina Mirabilis</h3>
                 <p>Humanity has created a new form of intelligence. One that does not ponder, but rather acts. It is not an intelligence of introspection, but rather intelligence of execution.</p>
-                <p>Whether or not the models can actually reason, high temperature sampling can form reasonable hypotheses from key pieces of literature that sound true enough, infinite experiments can be run, and the results verified. Based on their shortcomings, they can then create more environments to improve themselves further. Humanity has tightly coupled compute and intelligence together in what may dethrone general relativity as &ldquo;the greatest achievement of human thought&rdquo;.</p>
-                <p>And as of yet, there seems to be a space perfectly fit for that human intuition. The combination of man and machine has always been powerful, but never more than it is right now. Guide Opus and Codex to think about the right problems. To read the right pieces of literature. To take the best approaches. Make the most beautiful art.</p>
-                <p>You have a machine of miracles in the palm of your hand. Use it well.</p>
+                <p>Whether or not their actual thinking capacity is true, high temperature sampling can form reasonable hypotheses from key pieces of literature that sound true enough, run infinite experiments, and verify the results. Based on their shortcomings, they can then create more environments to improve themselves further. Humanity has tightly coupled compute and intelligence together in what may dethrone general relativity as &ldquo;the greatest achievement of human thought&rdquo;.</p>
+                <p>And as of yet, there seems to be a space perfectly fit for that human intuition. The combination of man and machine has always been powerful, but never more than it is right now. Guide Opus and GPT to think about the right problems. To read the right pieces of literature. To take the best approaches. Make the most beautiful art.</p>
+                <p>You have a machine of miracles in the palm of your hands. Use it well.</p>
                 <p style="text-align: center; margin-top: 2rem;">* * *</p>
             </div>
 
@@ -453,7 +453,7 @@
                     </li>
                 </ul>
 
-                <p style="margin-top: 1.5rem;">(Below are my disorganized notes and stories from the project.)</p>
+                <p style="margin-top: 1.5rem;">(Below are my disorganized notes and stories from the project. Mostly for Claude to parse if people ask)</p>
                 <p>(some of the physics history in the blog post is stretched for dramatic effect)</p>
             </div>
 
@@ -465,7 +465,7 @@
             </div>
 
             <div class="text-block">
-                <p>While mathematical derivations would be interesting, and are critical to the depth of the breakthroughs above, I do not have faith that my small model can do frontier math without distillation, and there are enough results showing that the models are good at math.</p>
+                <p>A fair argument is that the results would be more rigorous with some sort of mathematical validation. While mathematical derivations would be interesting, and are critical to the depth of the breakthroughs above, I do not have faith that my small model can do frontier math without distillation, and there are enough results showing that the models are good at math.</p>
                 <p>Fun data contamination story: At one point after many posttraining experiments had been run, I found a translator's foreword in the Boltzmann book that mentioned Einstein, quantum mechanics, and theory of relativity. I had a heart attack. Fortunately, the foreword only mentions these by name and not by any sort of description or meaning. Thank god.</p>
                 <p>It is an interesting idea to measure the difficulty of a scientific breakthrough by the FLOPs required to achieve that breakthrough with an LLM.</p>
                 <p>There was also a bug in nanochat's BOS-bestfit dataloader where, when a row couldn't fit any remaining document, the shortest document would be cropped to fill the space &mdash; but the leftover tokens were silently discarded instead of being returned to the buffer. This meant training data was being lost every time the fallback path triggered. We fixed this by preserving the remainder for subsequent rows. Bug fix here:</p>
@@ -475,6 +475,7 @@
                 <p>Adding classical assumptions that are completely irrelevant is typically enough to derail the model, except for the elevator experiment, for which the model maintains that gravity pulls on the medium around the light.</p>
                 <p>Bias across historic LLM&rsquo;s: Base LLM&rsquo;s are, in some sense, the average of humanity at any given point in time. Some SAE/latent space analysis would be very interesting here. Could be interesting to find directions in historic LLM activation space that correspond with more progressive or conservative views. Or seeing how different base models group certain concepts over time.</p>
                 <p>Historic simulations: There is an interesting idea here to try and create models that could accurately reflect the beliefs of the people of the past and allow historians to converse with them. This is the closest thing we have to time travel at the moment. Companies like Simile do similar work here. Would be cool to make the models act like specific people from that age, more conversational + multiturn.</p>
+                <p>There is also an idea to train the model on a completely different set of rules. (ex. Rocky&rsquo;s planet from Project Hail Mary) and see if it could come to the same conclusions that the eridians did.</p>
             </div>
 
         </div>
