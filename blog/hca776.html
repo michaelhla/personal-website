@@ -37,7 +37,7 @@
             <div style="margin: 2rem 0; text-align: center;">
         </div>
         <div class="text-block" style="text-align: center;">
-            <p style="margin-bottom: 2.5rem;">The LLM optimized carbon capture enzymes have officially been produced and validated. The best designs were 170% more active and 25% more stable across extreme pH (Tm +8.5 C).</p>
+            <p style="margin-bottom: 2.5rem;">The LLM optimized carbon capture enzymes have officially been produced and validated. The best designs showed a 177% activity increase (Sonnet with tools) and an 8.5°C increase in melting temperature at pH 5.5 (creative Pro-1).</p>
         </div>
 
         <div style="margin: 2rem 0; text-align: center;">
@@ -54,7 +54,7 @@
         <div class="blog-content">
             <!-- Introduction section -->
             <div class="text-block">
-                <p style="margin-bottom: 2.5rem;">A few months ago, I RLed an LLM towards a rosetta energy function objective to optimize protein sequences. Pro-1 appeared to have strong benchmark performance, outperforming all of the frontier models on a custom protein stability eval. Initial wet lab validations on FGF-1 (a naturally unstable growth factor) showed promising results, with gains in melting temperature of up to 23 degrees celsius. With these successes, it was time to test the model on a true application.</p>
+                <p style="margin-bottom: 2.5rem;">A few months ago, I RLed an LLM towards a rosetta energy function objective to optimize protein sequences. Pro-1 appeared to have strong benchmark performance, outperforming all of the frontier models on a custom protein stability eval. Initial wet lab validations on FGF-1 (a naturally unstable growth factor) showed promising results, with a melting-temperature gain of 20.5°C for K116E (71.3°C versus a mean wild-type control of 50.8°C), while retaining FGFR1 binding. With these successes, it was time to test the model on a true application.</p>
                 <p style="margin-bottom: 2.5rem;">Carbonic anhydrases have been heavily researched for carbon capture applications due to their remarkable CO₂ conversion efficiency. Among these, HCA II is an exceptionally efficient candidate, speeding up the conversion of carbon dioxide to bicarbonate by a factor of 10^7.</p>
                 <p style="margin-bottom: 2.5rem;">However, practical deployments of carbonic anhydrases are particularly challenging as variants must retain high stability and activity in everchanging field conditions. In many open air applications, such as enhanced rock weathering, enzymes need to remain functional in both the acidic conditions found in agricultural soils, as well as the basic conditions that arise as the basalt weathers and releases alkaline minerals.</p>
                 <p style="margin-bottom: 2.5rem;">Additionally, enzyme optimization is particularly difficult. In contrast with small peptides or binders, enzymes are highly dynamic molecules and rely heavily on conformational changes to perform their function. Even the most minor of mutations can disrupt dynamics and active site geometry, making it difficult to improve stability without compromising activity.</p>
@@ -93,7 +93,7 @@
                 <p style="margin-bottom: 2.5rem;">The best sequence across conditions was produced by the "creativity tuned" Pro-1 model. Claude with tools produced significantly more active enzymes with elevated stability in highly basic environments.</p>
                 <p style="margin-bottom: 2.5rem;"><strong>Best activity: 169.4 min-1 (+177%) (sonnet)</strong></p>
                 <p style="margin-bottom: 2.5rem;"><strong>Best at ph 5.5: Tm  42.5 (+8.5 degrees C) (pro-1)</strong></p>
-                <p style="margin-bottom: 2.5rem;"><strong>Best at pH 9.5: 43 (+8 deg C) (sonnet)</strong></p>
+                <p style="margin-bottom: 2.5rem;"><strong>Best at pH 9.5: 43°C (+7°C versus the 36°C wild-type control) (sonnet)</strong></p>
                 <p style="margin-bottom: 2.5rem;">Note that many of the sequences are particularly good for a certain application (good in high vs low pH, higher temp, higher activity). However, sequences 2, 10, and 11 appear to be useful across a number of conditions.</p>
                 <p style="margin-bottom: 2.5rem;">Also worth noting the discrepancy between TSA titration Tm and pH stability Tm. Not certain why these are so different despite running the same sypro orange assay, but given that the pH stability assays more accurately reflect deployment conditions and have significantly more samples, I am inclined to attribute the difference to noise.</p>
             </div>
