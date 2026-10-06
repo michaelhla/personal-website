@@ -12,22 +12,11 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
-    <!-- Canonical scholarly record; original release year, not repository upload date. -->
-    <link rel="canonical" href="https://michaelhla.com/blog/pro1.html">
-    <meta name="citation_title" content="Pro-1">
-    <meta name="citation_author" content="Hla, Michael">
-    <meta name="citation_publication_date" content="2025">
-    <meta name="citation_pdf_url" content="https://michaelhla.com/papers/pro1.pdf">
-    <meta name="citation_abstract_html_url" content="https://michaelhla.com/blog/pro1.html">
-    <meta name="citation_language" content="en">
-    <!-- Add citation_doi after a real DOI is reserved; add citation_online_date on actual online release. -->
-
 </head>
 <body>
     <article class="blog-post">
         <header class="blog-header" style="margin-bottom: 0.2; margin-top: 5rem;">
             <h1 style="margin-bottom: 0.5; font-size: 3rem;">Pro-1</h1>
-            <p style="max-width: 700px; margin: 1rem auto;">A Reasoning Model Trained Using GRPO Toward a Physics-Based Reward Function for Protein Stability</p>
         </header>
         <div class="blog-author" style="margin-bottom: 0;">
             <h3 style="margin: 0;"><a href="/" style="text-decoration: none; color: inherit;">Michael Hla</a></h3>
@@ -58,14 +47,6 @@
 
 
         <div class="blog-content">
-            <section id="archival-report" class="text-block">
-                <h2>Archival technical report</h2>
-                <p><strong>Pro-1</strong> &mdash; Michael Hla (2025).</p>
-                <p><a href="/papers/pro1.pdf">Read the technical report (PDF)</a> &middot; <a href="/papers/pro1.bib">BibTeX</a> &middot; <a href="/papers/pro1.cff">CITATION.cff</a></p>
-                <p><strong>Abstract.</strong> Pro-1 explores natural-language-guided protein sequence optimization using a structure-based computational reward. Given a sequence, biological context, and prior mutagenesis results, a language model proposes modifications and an accompanying rationale. Supervised fine-tuning uses synthetic sequence-repair reasoning traces; the 8B model is subsequently trained with Group Relative Policy Optimization (GRPO), using ESMFold structure predictions and Rosetta REF2015 scores. A creativity and specificity reward variant is reported to improve benchmark performance from 43% to 47%, while a three-iteration critic loop reaches a reported 71% pass rate. Success in the original 40-enzyme evaluation means any improvement in Rosetta score, not experimentally measured stability or retained activity. This report archives the March 2025 computational study, distinguishes the supervised 70B model from the GRPO-trained 8B model, and identifies the limits of proxy-based optimization. No new experiments are reported.</p>
-                <p><strong>Archival note.</strong> Originally released publicly in March 2025. This archival technical-report edition was prepared on 5 October 2026 from the public project record. The original release date is distinct from the intended October 2026 archival deposit. No Zenodo deposit or DOI registration has been completed for this edition; the actual deposit date will be recorded when publication occurs.</p>
-            </section>
-
             <!-- Content block -->
             <div class="content-block">
                 <div class="media-container">
